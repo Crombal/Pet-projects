@@ -14,17 +14,37 @@
         Add new message
     </a>
 
-    <div class="collapse" id="collapseExample">
+    <div class="collapse <#if message??>show</#if>" id="collapseExample">
         <div class="form-group">
             <form method="post" action="/main" enctype="multipart/form-data" >
-                <input type="text" name="text" placeholder="Message" class="form-control mb-2"/>
-                <input type="text" name="tag" placeholder="Tag" class="form-control mb-2"/>
+                <div class="form-group mb-2">
+                    <input type="text" name="text" placeholder="Message"
+                           value="<#if message??>${message.text}</#if>"
+                           class="form-control ${(textError??)?string('is-invalid', '')}"/>
+                    <#if textError??>
+                        <div class="invalid-feedback">
+                            ${textError}
+                        </div>
+                    </#if>
+                </div>
+                <div class="form-group mb-2">
+                    <input type="text" name="tag" placeholder="Tag"
+                           value="<#if message??>${message.tag}</#if>"
+                           class="form-control  ${(tagError??)?string('is-invalid', '')}"/>
+                    <#if tagError??>
+                        <div class="invalid-feedback">
+                            ${tagError}
+                        </div>
+                    </#if>
+                </div>
                 <div class="custom-file">
                     <input type="file" name="file" id="customFile"/>
                     <label class="custom-file-label" for="customFile">Choose file</label>
                 </div>
                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                <button type="submit" class="btn btn-danger mt-2">Send</button>
+                <div class="form-group mt-2">
+                    <button type="submit" class="btn btn-danger">Send</button>
+                </div>
             </form>
         </div>
     </div>

@@ -11,7 +11,7 @@
     >
 <#else>
     <#assign
-        name = "Quest"
+        name = "Guest"
         isAdmin = false
         isPresent = false
     >

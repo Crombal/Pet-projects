@@ -20,7 +20,7 @@
                 <a class="nav-link" href="/user">User list</a>
             </li>
             </#if>
-            <#if user??>
+            <#if user?? && name!="G uest">
             <li class="nav-item">
                 <a class="nav-link" href="/user/profile">My profile</a>
             </li>
