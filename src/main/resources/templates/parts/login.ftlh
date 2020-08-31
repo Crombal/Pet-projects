@@ -5,6 +5,13 @@
                 <input type="text" name="username" placeholder="Username" class="form-control"/>
             </div>
         </div>
+        <#if isRegisterForm>
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    <input type="email" name="email" placeholder="Email@email.com" class="form-control"/>
+                </div>
+            </div>
+        </#if>
         <div class="form-group row">
             <div class="col-sm-3">
                 <input type="password" name="password" placeholder="Password" class="form-control"/>
