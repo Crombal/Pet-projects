@@ -13,14 +13,14 @@
                 <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/main">Messages</a>
+                <a class="nav-link" href="/main"><#if user?? && name!="Guest">Message<#else>Log in</#if></a>
             </li>
             <#if isAdmin>
             <li class="nav-item">
                 <a class="nav-link" href="/user">User list</a>
             </li>
             </#if>
-            <#if user?? && name!="G uest">
+            <#if user?? && name!="Guest">
             <li class="nav-item">
                 <a class="nav-link" href="/user/profile">My profile</a>
             </li>

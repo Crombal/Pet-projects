@@ -53,6 +53,15 @@
                 </div>
             </div>
 
+            <div class="form-group row col-sm-3">
+                <div class="g-recaptcha" data-sitekey="6Le85cUZAAAAAAJXkhK9T06IlXMzqqb9P6mFpDZn"></div>
+                <#if captchaError??>
+                    <div class="alert alert-danger" role="alert">
+                        ${captchaError}
+                    </div>
+                </#if>
+            </div>
+
         </#if>
 
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
@@ -72,7 +81,7 @@
 
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <button type="submit" class="btn btn-dark">Sign Out</button>
+        <button type="submit" class="btn btn-dark">Log Out</button>
     </form>
 
 </#macro>

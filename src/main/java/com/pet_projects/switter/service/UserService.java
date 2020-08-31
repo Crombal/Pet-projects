@@ -58,8 +58,8 @@ public class UserService implements UserDetailsService {
     private void sendMessage(User user) {
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
-                    "Hello, %s! \n" +
-                            "Welcome to Switter. \n " +
+                    "Hello, %s!\n" +
+                            "Welcome to Switter.\n" +
                             "Please, visit next link to activate your account: \n" +
                             "http://localhost:8080/activate/%s",
                     user.getUsername(),
