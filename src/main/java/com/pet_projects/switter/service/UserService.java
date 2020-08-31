@@ -4,6 +4,7 @@ import com.pet_projects.switter.domain.Role;
 import com.pet_projects.switter.domain.User;
 import com.pet_projects.switter.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,6 +25,9 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Value("${hostname}")
+    private String hostname;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -61,8 +65,9 @@ public class UserService implements UserDetailsService {
                     "Hello, %s!\n" +
                             "Welcome to Switter.\n" +
                             "Please, visit next link to activate your account: \n" +
-                            "http://localhost:8080/activate/%s",
+                            "http://%s/activate/%s",
                     user.getUsername(),
+                    hostname,
                     user.getActivationCode()
             );
             mailSender.send(user.getEmail(), "Activation code", message);
