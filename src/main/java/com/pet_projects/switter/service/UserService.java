@@ -26,8 +26,8 @@ public class UserService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Value("${hostname}")
-    private String hostname;
+    @Value("${myhostname}")
+    private String myhostname;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -67,7 +67,7 @@ public class UserService implements UserDetailsService {
                             "Please, visit next link to activate your account: \n" +
                             "http://%s/activate/%s",
                     user.getUsername(),
-                    hostname,
+                    myhostname,
                     user.getActivationCode()
             );
             mailSender.send(user.getEmail(), "Activation code", message);

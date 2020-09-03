@@ -8,11 +8,13 @@
         name = user.getUsername()
         isAdmin = user.isAdmin()
         isPresent = true
+        currentUserId = user.getId()
     >
 <#else>
     <#assign
         name = "Guest"
         isAdmin = false
         isPresent = false
+        currentUserId = -1
     >
 </#if>
