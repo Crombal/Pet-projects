@@ -1,6 +1,13 @@
+<#include "security.ftlh">
 <#macro login path isRegisterForm>
 
     <form action="${path}" method="post">
+        <input type="hidden" id="myurl" name="myurl"/>
+
+        <script type="text/javascript">
+            document.getElementById('myurl').value = window.location.href
+        </script>
+
         <div class="form-group row">
             <div class="col-sm-3">
                 <input type="text" name="username" placeholder="Username"
@@ -81,7 +88,7 @@
 
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <button type="submit" class="btn btn-dark">Log Out</button>
+        <button type="submit" class="btn btn-dark"><#if user??>Log Out<#else>Log in</#if></button>
     </form>
 
 </#macro>

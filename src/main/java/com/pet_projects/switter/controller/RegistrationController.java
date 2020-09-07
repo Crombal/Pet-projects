@@ -32,6 +32,8 @@ public class RegistrationController {
     @Autowired
     private RestTemplate restTemplate;
 
+    public static String hostname;
+
     @GetMapping("/registration")
     public String registration() {
         return "registration";
@@ -41,9 +43,12 @@ public class RegistrationController {
     public String addUser(
             @RequestParam("password2") String passwordConfirm,
             @RequestParam("g-recaptcha-response") String captchaResponse,
+            @RequestParam("myurl") String myurl,
             @Valid User user,
             BindingResult bindingResult,
             Model model) {
+
+        hostname = myurl;
 
         String url = String.format(CAPTCHA_URL, secret, captchaResponse);
 

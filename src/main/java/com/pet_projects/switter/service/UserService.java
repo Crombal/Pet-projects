@@ -1,5 +1,7 @@
 package com.pet_projects.switter.service;
 
+import com.pet_projects.switter.controller.MainController;
+import com.pet_projects.switter.controller.RegistrationController;
 import com.pet_projects.switter.domain.Role;
 import com.pet_projects.switter.domain.User;
 import com.pet_projects.switter.repository.UserRepository;
@@ -25,9 +27,6 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-    @Value("${myhostname}")
-    private String myhostname;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -61,11 +60,15 @@ public class UserService implements UserDetailsService {
 
     private void sendMessage(User user) {
         if (!StringUtils.isEmpty(user.getEmail())) {
+            String myhostname = RegistrationController.hostname;
+
+            myhostname = myhostname.replace("/registration", "");
+
             String message = String.format(
                     "Hello, %s!\n" +
                             "Welcome to Switter.\n" +
                             "Please, visit next link to activate your account: \n" +
-                            "http://%s/activate/%s",
+                            "%s/activate/%s",
                     user.getUsername(),
                     myhostname,
                     user.getActivationCode()
@@ -134,5 +137,17 @@ public class UserService implements UserDetailsService {
         if (isEmailChanged) {
             sendMessage(user);
         }
+    }
+
+    public void subscribe(User currentUser, User user) {
+        user.getSubscribers().add(currentUser);
+
+        userRepository.save(user);
+    }
+
+    public void unsubscribe(User currentUser, User user) {
+        user.getSubscribers().remove(currentUser);
+
+        userRepository.save(user);
     }
 }
