@@ -1,12 +1,10 @@
 package com.pet_projects.switter.service;
 
-import com.pet_projects.switter.controller.MainController;
 import com.pet_projects.switter.controller.RegistrationController;
 import com.pet_projects.switter.domain.Role;
 import com.pet_projects.switter.domain.User;
 import com.pet_projects.switter.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
