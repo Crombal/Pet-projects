@@ -10,6 +10,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+
+    <script src="https://kit.fontawesome.com/0440b096e7.js" crossorigin="anonymous"></script>
+
     <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
